@@ -27,7 +27,7 @@ with open("color_gradient.kll",'w') as f:
             break
         for frame in range(frames_per_transition):
             intermediate_color = get_color_for_frame(colors[idx],colors[idx+1],frames_per_transition, frame)
-            frame_rows = reduce(lambda a,b:"{}, P[r:{}] {}".format(a,b,intermediate_color),[2,3,4,5,6],"P[r:1] {}".format(intermediate_color))
+            frame_rows = reduce(lambda a,b:"{}, P[r:{}] {}".format(a,b,intermediate_color),range(1,8),"P[r:0] {}".format(intermediate_color))
             f.write("A[color_gradient, {}] <= {};\n".format(frame_counter, frame_rows))
             frame_counter += 1
 
